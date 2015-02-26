@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+        <title>TDD && BDD: Javascript y el buen sabor de las pruebas</title>
+
+		<meta name="description" content="Unit testing on javascript">
+		<meta name="author" content="Oscar Andrés Granada">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>TDD && BDD</h1>
+					<h3>Javascript y el buen sabor de las pruebas</h3>
+					<p>
+						<small>Creado por <a href="https://plus.google.com/+OscarAndr%C3%A9sGranadaBaquero">Oscar Andrés Granada Baquero</a> / <a href="http://twitter.com/oagranada">@oagranada</a></small>
+					</p>
+				</section>
+
+				<section>
+                    <h2>Historia</h2>
+                    <ul>
+                        <li>1956-1982: Pruebas basadas en depuración.</li>
+                        <li>1983-1987: Pruebas humanas realizadas a lo largo de todo el ciclo de vida del S.W.</li>
+                        <li>1988-2005: Pruebas orientadas a la prevención de fallos, inicio de pruebas auntomatizadas.</li>
+                        <li>2006-2014: TDD, BDD, metodologias orientadas a pruebas.</li>
+                    </ul>
+				</section>
+
+                <!-- Example of nested vertical slides -->
+
+				<section>
+					<section>
+						<h2>TDD?</h2>
+						<p>Test Driven Development (Desarrollo orientado a pruebas)</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img style="width:250px; height:auto" data-src="images/reverse.jpg" alt="No Way">
+						</a>
+					</section>
+					<section>
+						<h2>¿Que es?</h2>
+                        <p>
+                        Es una metodologia de desarrollo de software en la cual antes de escribir el programa en cuestión se escriben las pruebas que 
+                        permiten verificar el correcto funcionamiento del programa que se va a crear.
+                        </p>
+					</section>
+					<section>
+						<h2>Criclo de vida de TDD</h2>
+						<p>TDD es llevado a cabo mediante 5 pasos:</p>
+						<br>
+						<a href="#/2">
+							<img style="width:370px; height:auto" data-src="images/tdd.png" alt="TDD Flowchart">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>BDD?</h2>
+						<p>Behavioral Driven Development (Desarrollo orientado al comportamiento)</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img style="width:250px; height:auto" data-src="images/contra.jpg" alt="No Way">
+						</a>
+					</section>
+					<section>
+						<h2>¿Que es?</h2>
+                        <p>
+                        Es una metodologia de desarrollo de software en la cual antes de escribir el programa en cuestión se escriben las pruebas que 
+                        permiten verificar el correcto funcionamiento del programa que se va a crear. Éstas pruebas están ordenadas de manera gerarquica
+                        para entender el por que de cada una de las pruebas, y así trabajar con respecto a los casos de uso e historias de usuario.
+                        <br/>
+                        BDD elimina los problemas de TDD (Falta de expresividad de las pruebas, convenciones).
+                        </p>
+					</section>
+					<section>
+						<h2>Criclo de vida de BDD</h2>
+						<p>BDD es llevado a cabo mediante 6 pasos:</p>
+						<br>
+						<a href="#/2">
+							<img style="width:370px; height:auto" data-src="images/bdd.png" alt="BDD Flowchart">
+						</a>
+					</section>
+				</section>
+
+
+				<section>
+                    <h2>Ejemplo</h2>
+                    <ul>
+                        <li>Navegador web</li>
+                        <li>Node.js</li>
+                        <li>Mocha</li>
+                        <li>Chai</li>
+                    </ul>
+				</section>
+
+
+				<section>
+                    <pre><code data-trim contenteditable>
+var assert = require("assert")
+describe('Pruebas', function(){
+  describe('Factorial()', function(){
+    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){
+      assert.equal(1, factorial(5));
+    })
+  })
+})
+                    </code></pre>
+                </section>
+
+
+				<section>
+                    <pre><code data-trim contenteditable>
+  Pruebas
+    Factorial()
+      1) Debe retornar 1 si es menor el valor de entrada es 0
+
+
+  0 passing (8ms)
+  1 failing
+
+  1) Pruebas Factorial() Debe retornar 1 si es menor el valor de entrada es 0:
+     ReferenceError: factorial is not defined
+
+                    </code></pre>
+                </section>
+
+
+				<section>
+                    <pre><code data-trim contenteditable>
+var factorial = require("./funciones.js").factorial;
+var assert = require("assert")
+describe('Pruebas', function(){
+  describe('Factorial()', function(){
+    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){
+      assert.equal(1, factorial(5));
+    })
+  })
+})
+                    </code></pre>
+                </section>
+
+
+				<section>
+                    <pre><code data-trim contenteditable>
+ Pruebas
+    Factorial()
+      1) Debe retornar 1 si es menor el valor de entrada es 0
+
+
+  0 passing (8ms)
+  1 failing
+
+  1) Pruebas Factorial() Debe retornar 1 si es menor el valor de entrada es 0:
+     AssertionError: 1 == "undefined"
+
+                    </code></pre>
+                </section>
+
+
+
+				<section>
+					<h2>Entonces se hace así hasta que se termina el resultado deseado.</h2>
+                </section>
+
+
+				<section>
+                    <pre><code data-trim contenteditable>
+var factorial = require("./funciones.js").factorial;                            
+var assert = require("assert")                                                  
+describe('Pruebas', function(){                                                 
+  describe('Factorial()', function(){                                           
+    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){      
+      assert.equal(1, factorial(1));                                            
+    });                                                                         
+    it('Debe retornar el resultado de una multiplicación sucesiva', function(){ 
+      assert.equal(120, factorial(5));                                          
+    }); 
+  }) 
+}) 
+                    </code></pre>
+                </section>
+
+				<section>
+                    <pre><code data-trim contenteditable>
+                                                                                
+function factorial(x) {                                                         
+   if(x<=0)                                                                     
+       return 1;                                                                
+   else                                                                         
+       return x*factorial(x-1);                                                 
+}                                                                               
+                                                                                
+module.exports = {                                                              
+    "factorial": factorial                                                      
+}                                                                               
+  
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2> BDD </h2>
+                </section>
+
+				<section>
+                    <pre><code data-trim contenteditable>
+var chai = require('chai');                                                     
+var expect = chai.expect;                                                       
+var factorial = require("./funciones.js").factorial;                            
+                                                                                
+describe('Pruebas', function(){                                                 
+  describe('Factorial()', function(){                                           
+    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){      
+      expect(factorial(1)).to.be.equal(1);                                      
+    });                                                                         
+    it('Debe retornar el resultado de una multiplicación sucesiva', function(){ 
+      expect(factorial(5)).to.be.equal(120);                                    
+    });                                                                         
+  })                                                                            
+})                                                                              
+      
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>¿Preguntas?</h2>
+                </section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
