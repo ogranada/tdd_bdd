@@ -132,7 +132,7 @@
 var assert = require("assert")
 describe('Pruebas', function(){
   describe('Factorial()', function(){
-    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){
+    it('Debe retornar 1 si el valor de entrada es menor o igual a 0', function(){
       assert.equal(1, factorial(5));
     })
   })
@@ -145,13 +145,13 @@ describe('Pruebas', function(){
                     <pre><code data-trim contenteditable>
   Pruebas
     Factorial()
-      1) Debe retornar 1 si es menor el valor de entrada es 0
+      1) Debe retornar 1 si el valor de entrada es menor o igual a 0
 
 
   0 passing (8ms)
   1 failing
 
-  1) Pruebas Factorial() Debe retornar 1 si es menor el valor de entrada es 0:
+  1) Pruebas Factorial() Debe retornar 1 si el valor de entrada es menor o igual a 0
      ReferenceError: factorial is not defined
 
                     </code></pre>
@@ -164,7 +164,7 @@ var factorial = require("./funciones.js").factorial;
 var assert = require("assert")
 describe('Pruebas', function(){
   describe('Factorial()', function(){
-    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){
+    it('Debe retornar 1 si el valor de entrada es menor o igual a 0', function(){
       assert.equal(1, factorial(5));
     })
   })
@@ -177,13 +177,13 @@ describe('Pruebas', function(){
                     <pre><code data-trim contenteditable>
  Pruebas
     Factorial()
-      1) Debe retornar 1 si es menor el valor de entrada es 0
+      1) Debe retornar 1 si el valor de entrada es menor o igual a 0
 
 
   0 passing (8ms)
   1 failing
 
-  1) Pruebas Factorial() Debe retornar 1 si es menor el valor de entrada es 0:
+  1) Pruebas Factorial() Debe retornar 1 si el valor de entrada es menor o igual a 0
      AssertionError: 1 == "undefined"
 
                     </code></pre>
@@ -202,7 +202,7 @@ var factorial = require("./funciones.js").factorial;
 var assert = require("assert")                                                  
 describe('Pruebas', function(){                                                 
   describe('Factorial()', function(){                                           
-    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){      
+    it('Debe retornar 1 si el valor de entrada es menor o igual a 0', function(){
       assert.equal(1, factorial(1));                                            
     });                                                                         
     it('Debe retornar el resultado de una multiplicación sucesiva', function(){ 
@@ -242,7 +242,7 @@ var factorial = require("./funciones.js").factorial;
                                                                                 
 describe('Pruebas', function(){                                                 
   describe('Factorial()', function(){                                           
-    it('Debe retornar 1 si es menor el valor de entrada es 0', function(){      
+    it('Debe retornar 1 si el valor de entrada es menor o igual a 0', function(){
       expect(factorial(1)).to.be.equal(1);                                      
     });                                                                         
     it('Debe retornar el resultado de una multiplicación sucesiva', function(){ 
